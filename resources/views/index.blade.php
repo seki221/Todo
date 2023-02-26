@@ -24,7 +24,7 @@
 
 <body>
   <div class="container">
-    <div class=card　style="color:white">
+    <div class="card">
       <div>
         <h1>Todo List</h1>
         <form action="/" method="POST">
