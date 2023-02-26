@@ -11,5 +11,5 @@ class todos extends Model
 
 
 
-protected $fillable = ['id', 'content', 'created_at'];
+protected $fillable = ['id', 'content', 'created_at', ];
 }
