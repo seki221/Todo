@@ -25,8 +25,8 @@ Route::group(['prefix' => 'user'], function () {
 
 //追加するコード
 
-Route::get('/', function () { return view('index');});
-Route::post('/', [TestController::class, 'post']);
+Route::get('/', [TodoController::class, 'index']);
+Route::post('/', [TodoController::class, 'post']);
 // Route::get('/', function () {
 //     return view('welcome');
 // });

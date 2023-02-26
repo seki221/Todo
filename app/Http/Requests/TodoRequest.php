@@ -26,8 +26,8 @@ class TodoRequest extends FormRequest
         return [
             'index' => 'required',
             'content' => 'integer|min:0|max:150',
-            'add' => 'required'
-            'delete' => 'required'
+            'add' => 'required',
+            'delete' => 'required',
 
         ];
     }

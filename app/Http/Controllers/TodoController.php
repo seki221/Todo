@@ -15,7 +15,7 @@ class TodoController extends Controller
     public function index()
     {
         $todos = todos::all();
-        dd($todos);
+        
         return view('index', ['todos' => $todos]);
 
     }
@@ -40,7 +40,7 @@ class TodoController extends Controller
     {
         $todo = new todos;
         $todo = $request->input('todo');
-        dd($todo);
+        
 
 
     }
@@ -64,19 +64,7 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        
     }
 
     /**
@@ -85,7 +73,7 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delite($id)
+    public function delete($id)
     {
         //
     }
