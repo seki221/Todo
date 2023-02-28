@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class TodoController extends Controller
     public function index()
     {
 
-        dd('aaa')
+        dd('aaa');
         $todos = Todo::all();
         return view('index', ['todos' => $todos]);
 
@@ -26,11 +27,12 @@ class TodoController extends Controller
         return view('add');
     }
 
-    public function create(AuthorRequest $request)
+    public function update(Todo $request)
     {
         $form = $request->all();
-        Author::create($form);
+        unset($form['_token']);
+        Todo::where('id', $request->id)->update($form);
         return redirect('/');
     }
-    
+
 }

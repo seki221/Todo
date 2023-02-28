@@ -23,5 +23,8 @@ Route::group(['prefix' => 'todo'], function () {
 
 Route::get('/todo', [TodoController::class, 'get']);
 Route::post('/todo', [TodoController::class, 'post']);
-Route::post('/todo/update', [TodoController::class, 'post']);
-Route::post('/todo/delete', [TodoController::class, 'post']);
+Route::post('/add', [TodoController::class, 'post']);
+Route::post('/add', [AuthorController::class, 'create']);
+Route::get('/edit', [AuthorController::class, 'edit']);
+Route::post('/edit', [AuthorController::class, 'update']);
+Route::post('/delete', [TodoController::class, 'post']);
