@@ -14,19 +14,14 @@ use App\Http\Controllers\TodoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'user'], function () {
+Route::group(['prefix' => 'todo'], function () {
     Route::get('/', [TodoController::class, 'index']);
     Route::get('add', [TodoController::class, 'add']);
     Route::get('edit', [TodoController::class, 'edit']);
-    Route::get('del', [TodoController::class, 'del']);
+    Route::get('delete', [TodoController::class, 'delete']);
 });
 
-
-
-//追加するコード
-
-Route::get('/', [TodoController::class, 'index']);
-Route::post('/', [TodoController::class, 'post']);
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/todo', [TodoController::class, 'get']);
+Route::post('/todo', [TodoController::class, 'post']);
+Route::post('/todo/update', [TodoController::class, 'post']);
+Route::post('/todo/delete', [TodoController::class, 'post']);
