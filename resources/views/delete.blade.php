@@ -47,7 +47,7 @@
     </tr>
     <tr>
       <th></th>
-      <td><button>送信</button></td>
+      <td><button>削除</button></td>
     </tr>
   </table>
 </form>

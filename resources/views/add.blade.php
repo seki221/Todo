@@ -37,16 +37,12 @@
   <table>
     @csrf
     <tr>
-      <th>name</th>
-      <td><input type="text" name="name"></td>
+      <th>cleated_at</th>
+      <td><input type="text" name="cleated_at"></td>
     </tr>
     <tr>
-      <th>age</th>
-      <td><input type="text" name="age"></td>
-    </tr>
-    <tr>
-      <th>nationality</th>
-      <td><input type="text" name="nationality"></td>
+      <th>content</th>
+      <td><input type="textbox" name="content"></td>
     </tr>
     <tr>
       <th></th>

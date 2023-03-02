@@ -14,17 +14,17 @@ use App\Http\Controllers\TodoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'todo'], function () {
-    Route::get('/', [TodoController::class, 'index']);
-    Route::get('add', [TodoController::class, 'add']);
-    Route::get('edit', [TodoController::class, 'edit']);
-    Route::get('delete', [TodoController::class, 'delete']);
-});
+// Route::group(['prefix' => 'todo'], function () {
+//     Route::get('/', [TodoController::class, 'index']);
+//     Route::get('add', [TodoController::class, 'add']);
+//     Route::get('edit', [TodoController::class, 'edit']);
+//     Route::get('delete', [TodoController::class, 'delete']);
+// });
 
-Route::get('/todo', [TodoController::class, 'get']);
-Route::post('/todo', [TodoController::class, 'post']);
+Route::get('/', [TodoController::class, 'index']);
 Route::post('/add', [TodoController::class, 'post']);
-Route::post('/add', [AuthorController::class, 'create']);
-Route::get('/edit', [AuthorController::class, 'edit']);
-Route::post('/edit', [AuthorController::class, 'update']);
-Route::post('/delete', [TodoController::class, 'post']);
+Route::post('/add', [TodoController::class, 'create']);
+Route::get('/edit', [TodoController::class, 'edit']);
+Route::post('/edit', [TodoController::class, 'update']);
+Route::get('/delete', [TodoController::class, 'delete']);
+Route::post('/delete', [TodoController::class, 'remove']);

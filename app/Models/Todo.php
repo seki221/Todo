@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class todos extends Model
+class Todo extends Model
 {
     use HasFactory;
 
 
 
-protected $fillable = ['id', 'content', 'created_at', ];
+protected $fillable = ['id', 'creat','content', 'created_at', ];
 }
