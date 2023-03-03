@@ -91,27 +91,7 @@
   @endif
   {{-- 追記ここまで --}}
 
-  <tr>
-    <td>
-      2023-03-01 02:24:15
-    </td>
-    <form action="/todos/{{ $todos->id }}/edit" method="post">
-      <input type="hidden" name="_token" value="WsIYI3BwhZtzkrihSb2rwNpYYWGHKAXXRJizWPRx">
-      <td>
-        <input type="text" class="input-update" value="yy" name="content" />
-      </td>
-      <td>
-        <button class="button-update">更新</button>
-      </td>
-    </form>
-    <td>
-      <form action="/todos/{{ $item->id }}" method="post">
-        @csrf
-        @method('DELETE')
-        <input type="hidden" name="_token" value="WsIYI3BwhZtzkrihSb2rwNpYYWGHKAXXRJizWPRx"> <button class="button-delete">削除</button>
-      </form>
-    </td>
-  </tr>
+  
 
 
 </body>
