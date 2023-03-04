@@ -40,6 +40,22 @@
     </div>
   </div>
 
+  <form action="/{{ $item->id }}" method="post" class="inline-block text-gray-500 font-medium" role="menuitem" tabindex="-1">
+    @csrf
+    @method('PUT')
+
+    <input type="hidden" name="status" value="{{$item->status}}">
+
+
+    <button type="submit" class="bg-emerald-700 py-4 w-20 text-white md:hover:bg-emerald-800 transition-colors">完了</button>
+  </form>
+
+
+
+
+
+<!-- 
+
   {{-- 追記 --}}
   @if ($todos->isNotEmpty())
   <div class="max-w-7xl mx-auto mt-20">
@@ -91,8 +107,8 @@
   @endif
   {{-- 追記ここまで --}}
 
-  
 
+ -->
 
 </body>
 

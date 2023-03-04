@@ -29,9 +29,9 @@ class TodoController extends Controller
         Todo::create($form);
         return redirect('/');
     }
-    public function edit(Request $content)
+    public function edit($id)
     {
-        $todos = Todo::find($content->id);
+        $todos = Todo::find($id);
         return view('edit', ['form' => $todos]);
     }
     public function update(TodoRequest $request, $id)
