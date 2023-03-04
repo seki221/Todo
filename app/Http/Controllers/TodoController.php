@@ -36,12 +36,18 @@ class TodoController extends Controller
     }
     public function update(TodoRequest $request, $id)
     {
+        if($request->status === null){
         $form = $request->all();
         unset($form['_token']);
         Todo::where('id', $request->id)->update($form);
         $todo = Todo::find($id);
-        $todo->name = $request->input('task_name');
+        $todo->Todo = $request->input('todo');
+        $todo->save();
+        } else {
+        $todo = Todo::find($id);
+        $todo-> status = true;
         $todo-> save();
+        }
         return redirect('/');
     }
 
