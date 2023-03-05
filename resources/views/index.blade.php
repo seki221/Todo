@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  @if($loop->first)
+  @if($todos->isNotEmpty())
   @foreach ($todos as $item)
   <div class="1">
 
@@ -44,7 +44,7 @@
     <tr>
       <td class="2">
         <div>
-          {{ $item->$todos}}
+          {{ $item->name}}
         </div>
       </td>
       <td>
@@ -70,9 +70,9 @@
         </td>
     </tr>
   </div>
+  @endforeach
   </tbody>
   </table>
-  @endforeach
   @endif
 
 
