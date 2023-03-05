@@ -9,9 +9,8 @@
 
 
 
+  <link rel="stylesheet" href="{{asset('/css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('/css/index.css')}}">
-  <link rel="stylesheet" href="{{asset('/public/css/reset.css')}}">
-  <link rel="stylesheet" href="{{asset('/css/add.css')}}">
 </head>
 
 <body>
@@ -33,40 +32,48 @@
               <th>更新</th>
               <th>削除</th>
             </tr>
-          </div>
-        </div>
-        </div>
-            @if($todos->isnotEmpty())
-            <div class="1">
-
-          <tbody>
-            @foreach ($todos as $item)
-            <tr>
-              <td class="2">
-                <div>
-                  {{ $item->content }}
-                </div>
-              </td>
-
-
-              <div class="eb">
-                <a href="update{{ $item->content }}" class="edit">
-                  <button class="button_edit">更新</button>
-                </a>
-              </div>
-              <div class="db">
-                <form action="/dalete/{{ $item->id }}" method="post" class="delete" role="menuitem" tabindex="-1">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="button_delete">削除</button>
-                </form>
-              </div>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
       </div>
-      @endif
+    </div>
+  </div>
+
+  @foreach ($todos as $item)
+  @if($loop->first)
+  <div class="1">
+
+
+    <tr>
+      <td class="2">
+        <div>
+          {{ $item->$todos}}
+        </div>
+      </td>
+      <td>
+        <div class="textbox">
+          <form action="/edit{{$item->content}}" method="get"></form>
+          </td>
+        </div>
+        <td class="eb">
+          <div>
+            <a href="/edit{{ $item->content }}" class="edit">
+              <button class="button_edit">更新</button>
+            </a>
+          </div>
+        </td>
+        <td>
+          <div class="db">
+            <form action="/dalete/{{ $item->id }}" method="post" class="delete" role="menuitem" tabindex="-1">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="button_delete">削除</button>
+            </form>
+          </div>
+        </td>
+    </tr>
+  </div>
+  </tbody>
+  </table>
+  @endif
+  @endforeach
 
 
 

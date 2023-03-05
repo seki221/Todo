@@ -7,17 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Todo</title>
 
-  @vite('resources/css/app.css')
+  @vite('public/css/edit.css')
 </head>
 
 <body class="flex flex-col min-h-[100vh]">
-  <header class="bg-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="py-6">
-        <p class="text-white text-xl">Todoアプリ-編集画面</p>
-      </div>
-    </div>
-  </header>
+  
 
   <main class="grow grid place-items-center">
     <div class="w-full mx-auto px-4 sm:px-6">
@@ -43,7 +37,7 @@
                 戻る
               </a>
               <button type="submit" class="p-4 bg-sky-800 text-white w-full max-w-xs hover:bg-sky-900 transition-colors">
-                編集する
+                更新
               </button>
             </div>
           </div>
@@ -53,13 +47,7 @@
       </div>
     </div>
   </main>
-  <footer class="bg-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="py-4 text-center">
-        <p class="text-white text-sm">Todoアプリ</p>
-      </div>
-    </div>
-  </footer>
+  
 </body>
 
 </html>
