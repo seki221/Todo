@@ -11,17 +11,16 @@
 
   <link rel="stylesheet" href="{{asset('/css/index.css')}}">
   <link rel="stylesheet" href="{{asset('/public/css/reset.css')}}">
-
-
+  <link rel="stylesheet" href="{{asset('/css/add.css')}}">
 </head>
-
 
 <body>
   <div class="container">
     <div class="card">
       <p class=title>Todo List</p>
       <div class="todo">
-        <form action="/" method="POST" class="mb-30">
+
+        <form action="/add" method="post" class="mb-30">
           @csrf
           <input type="text" name="content" class="input-add">
           <input class="button-add" type="submit" value="追加">
@@ -34,23 +33,40 @@
               <th>更新</th>
               <th>削除</th>
             </tr>
+          </div>
+        </div>
+        </div>
+            @if($todos->isnotEmpty())
+            <div class="1">
+
+          <tbody>
+            @foreach ($todos as $item)
+            <tr>
+              <td class="2">
+                <div>
+                  {{ $item->content }}
+                </div>
+              </td>
+
+
+              <div class="eb">
+                <a href="update{{ $item->content }}" class="edit">
+                  <button class="button_edit">更新</button>
+                </a>
+              </div>
+              <div class="db">
+                <form action="/dalete/{{ $item->id }}" method="post" class="delete" role="menuitem" tabindex="-1">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="button_delete">削除</button>
+                </form>
+              </div>
+            </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
-
-  <form action="/{{$todos -> id }}" method="post" class="inline-block text-gray-500 font-medium" role="menuitem" tabindex="０">
-    @csrf
-    @method('PUT')
-
-    <input type="hidden" name="status" value="{{$todos->status}}">
-
-
-    <button type="submit" class="add_button">追加</button>
-  </form>
-
-
+      @endif
 
 
 

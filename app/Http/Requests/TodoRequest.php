@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class TodoRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class TodoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,13 +25,7 @@ class TodoRequest extends FormRequest
     public function rules()
     {
         return [
-            'index' => 'required',
-            'content' => 'integer|min:0|max:100',
-            'add' => 'required',
-            'creat' => 'required',
-            'delete' => 'required',
-            'remove' => 'required',
-
+            'content' => 'required'
         ];
     }
 }
