@@ -36,8 +36,8 @@
     </div>
   </div>
 
-  @foreach ($todos as $item)
   @if($loop->first)
+  @foreach ($todos as $item)
   <div class="1">
 
 
@@ -72,8 +72,8 @@
   </div>
   </tbody>
   </table>
-  @endif
   @endforeach
+  @endif
 
 
 
