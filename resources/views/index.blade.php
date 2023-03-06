@@ -21,6 +21,7 @@
 
         <form action="/add" method="post" class="mb-30">
           @csrf
+          @method('PUT')
           <input type="text" name="content" class="input-add">
           <input class="button-add" type="submit" value="追加">
         </form>
@@ -39,36 +40,37 @@
   @if($todos->isNotEmpty())
   @foreach ($todos as $item)
   <div class="1">
-
-
     <tr>
       <td class="2">
         <div>
-          {{ $item->name}}
+            <form action="/edit{{$item -> $todos}}" method="post" class="date">
+              <input type="date" value="<?php echo date('Y-m-d'); ?>">
+          </form>
         </div>
       </td>
       <td>
         <div class="textbox">
-          <form action="/edit{{$item->content}}" method="get"></form>
-          </td>
-        </div>
-        <td class="eb">
-          <div>
-            <a href="/edit{{ $item->content }}" class="edit">
-              <button class="button_edit">更新</button>
-            </a>
-          </div>
-        </td>
-        <td>
-          <div class="db">
-            <form action="/dalete/{{ $item->id }}" method="post" class="delete" role="menuitem" tabindex="-1">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="button_delete">削除</button>
-            </form>
-          </div>
-        </td>
-    </tr>
+          <!-- <input type="text" id="name" name="name" required minlength="4" maxlength="8" size="10"> -->
+          <form action="/edit{{$item->$todos}}" method="get"><input type="text"></form>
+      </td>
+  </div>
+  <td class="eb">
+    <div>
+      <a href="/edit{{ $item->content }}" class="edit">
+        <button class="button_edit">更新</button>
+      </a>
+    </div>
+  </td>
+  <td>
+    <div class="db">
+      <form action="/dalete/{{ $item->id }}" method="post" class="delete" role="menuitem" tabindex="-1">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="button_delete">削除</button>
+      </form>
+    </div>
+  </td>
+  </tr>
   </div>
   @endforeach
   </tbody>

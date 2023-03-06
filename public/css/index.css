@@ -129,4 +129,8 @@ th {
 .textbox{
   display: table;
   border: #000;
+  text-align: center;
+}
+.date{
+  border: #fff;
 }

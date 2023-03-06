@@ -29,12 +29,12 @@ class TodoController extends Controller
     }
     public function edit($id)
     {
-    
         $todos = Todo::find($id);
         return view('edit', ['form' => $todos]);
     }
     public function update(TodoRequest $request, $id)
     {
+        dd('$aa');
         if($request->status === null){
         $form = $request->all();
         unset($form['_token']);
