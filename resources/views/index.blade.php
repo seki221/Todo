@@ -50,8 +50,8 @@
       </td>
       <td>
         <div class="textbox">
-          <!-- <input type="text" id="name" name="name" required minlength="4" maxlength="8" size="10"> -->
           <form action="/edit{{$item->$todos}}" method="get"><input type="text"></form>
+        </div>
       </td>
   </div>
   <td class="eb">
