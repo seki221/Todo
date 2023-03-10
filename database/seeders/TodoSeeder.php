@@ -15,7 +15,7 @@ class TodoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('todo_lists')->insert(
+        DB::table('todos')->insert(
             [
                 [
                     'content' => 'テスト1',

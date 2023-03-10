@@ -33,7 +33,7 @@
   @endforeach
 </ul>
 @endif
-<form action="/add" method="post">
+<form action="/add" method="get">
   <table>
     @csrf
     <tr>
@@ -46,7 +46,7 @@
     </tr>
     <tr>
       <th></th>
-      <td><button>送信</button></td>
+      <td><button>更新</button></td>
     </tr>
   </table>
 </form>

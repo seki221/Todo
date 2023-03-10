@@ -15,7 +15,9 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::all();
+        $todos = Todo::select('created_at', 'content')->get();
+        // dd('Todo');
+        
         return view('index', ['todos' => $todos]);
     }
     public function add()
