@@ -54,9 +54,9 @@
       </td>
       <td>
         <div class="textbox_edit">
-          <form action="/creat" method="post" class="mb-30">
+          <form action="/update{{$todo -> $todos}}" method="post">
             @csrf
-            @method('PUT')
+            @method('creat')
             <input type="text" name="content" class="edit_flame">
           </form>
         </div>
