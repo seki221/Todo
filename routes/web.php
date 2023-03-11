@@ -33,6 +33,6 @@ Route::delete('/todo/{todo}', [TodoController::class, 'delete']);
 Route::post('/remove', [TodoController::class, 'remove']);
 
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
