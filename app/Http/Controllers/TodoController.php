@@ -9,16 +9,29 @@ use App\Http\Requests\TodoRequest;
 class TodoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * ユーザーの全タスクをリスト表示
      *
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $todos = Todo::select('created_at', 'content')->get();
-        // dd('Todo');
+        $todos = $request->user()->todos()->get();
         
-        return view('index', ['todos' => $todos]);
+        return view('layouts.index', ['todos' => $this->forUser($request->user()),]);
+    }
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'content' => 'required|max:255',
+        ]);
+
+        // タスクの作成処理…
+        $request->user()->todos()->create([
+            'nontent' => $request->content,
+        ]);
+
+        return redirect('/tasks');
     }
     public function add()
     {
@@ -36,7 +49,6 @@ class TodoController extends Controller
     }
     public function update(TodoRequest $request, $id)
     {
-        dd('$aa');
         if($request->status === null){
         $form = $request->all();
         unset($form['_token']);

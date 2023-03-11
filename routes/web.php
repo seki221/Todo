@@ -21,14 +21,18 @@ use App\Http\Controllers\TodoController;
 //     Route::get('delete', [TodoController::class, 'delete']);
 // });
 
-Route::get('/', [TodoController::class, 'index']);
+
+Route::get('/todos', [TodoController::class, 'index']);
+Route::post('/todo', [TodoController::class, 'store']);
 // Route::get('/add', [TodoController::class, 'get']);
+
 Route::post('/add/{id}', [TodoController::class, 'create']);
 Route::get('/edit', [TodoController::class, 'edit']);
 Route::post('/update', [TodoController::class, 'update']);
-Route::get('/delete', [TodoController::class, 'delete']);
+Route::delete('/todo/{todo}', [TodoController::class, 'delete']);
 Route::post('/remove', [TodoController::class, 'remove']);
 
 
+Auth::routes();
 
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
