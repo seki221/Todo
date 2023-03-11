@@ -31,8 +31,3 @@ Route::get('/edit', [TodoController::class, 'edit']);
 Route::post('/update', [TodoController::class, 'update']);
 Route::delete('/todo/{todo}', [TodoController::class, 'delete']);
 Route::post('/remove', [TodoController::class, 'remove']);
-
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
