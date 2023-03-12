@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
@@ -8,33 +8,12 @@ use App\Http\Requests\TodoRequest;
 
 class TodoController extends Controller
 {
-    
-    public function index(Request $request)
+    public function index()
     {
         $todos = Todo::all();
-        
         return view('layouts.index', ['todos' => $todos]);
     }
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'content' => 'required|max:255',
-        ]);
-    }
-    public function find()
-    {
-        return view('find', ['input' => '']);
-    }
-
-    public function search(Request $request)
-    {
-        $author = Todo::find($request->input);
-        $param = [
-            'author' => $author,
-            'input' => $request->input
-        ];
-        return view('find', $param);
-    }
+    
     public function add()
     {
         return view('add');
