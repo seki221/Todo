@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Todo;
+use Illuminate\Http\Request;
 use App\Http\Requests\TodoRequest;
 
 class TodoController extends Controller
@@ -20,29 +20,38 @@ class TodoController extends Controller
         $this->validate($request, [
             'content' => 'required|max:255',
         ]);
+    }
+    public function find()
+    {
+        return view('find', ['input' => '']);
+    }
 
-        // タスクの作成処理…
-        $request->user()->todos()->create([
-            'nontent' => $request->content,
-        ]);
-
-        return redirect('/tasks');
+    public function search(Request $request)
+    {
+        $author = Todo::find($request->input);
+        $param = [
+            'author' => $author,
+            'input' => $request->input
+        ];
+        return view('find', $param);
     }
     public function add()
     {
         return view('add');
     }
-    public function create(Todo $request)
+    public function create(TodoRequest $request)
     {
+        $form = $request->all();
+        Todo::create($form);
         Todo::create(['content'=> $request->content]);
         return redirect('/');
     }
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $todos = Todo::find($id);
+        $todos = Todo::find($request -> id);
         return view('edit', ['form' => $todos]);
     }
-    public function update(Todo $request, $id)
+    public function update(TodoRequest $request, $id)
     {
         if($request->status === null){
         $form = $request->all();
@@ -59,7 +68,7 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    public function delete(Todo $request)
+    public function delete(Request $request)
     {
         $todos = Todo::find($request->id);
         return view('delete', ['form' => $todos]);

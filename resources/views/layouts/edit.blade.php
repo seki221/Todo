@@ -1,53 +1,61 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.default')
+<style>
+  th {
+    background-color: #289ADC;
+    color: white;
+    padding: 5px 40px;
+  }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Todo</title>
+  tr:nth-child(odd) td {
+    background-color: #FFFFFF;
+  }
 
-  @vite('public/css/edit.css')
-</head>
+  td {
+    padding: 25px 40px;
+    background-color: #EEEEEE;
+    text-align: center;
+  }
 
-<body class="flex flex-col min-h-[100vh]">
-  
+  button {
+    padding: 10px 20px;
+    background-color: #289ADC;
+    border: none;
+    color: white;
+  }
+</style>
+@section('title', 'edit.blade.php')
 
-  <main class="grow grid place-items-center">
-    <div class="w-full mx-auto px-4 sm:px-6">
-      <div class="py-[100px]">
-        <form action="/views/{{ $task->id }}" method="edit" class="mt-10">
-          @csrf
-          @method('PUT')
-
-          <div class="flex flex-col items-center">
-            <label class="w-full max-w-3xl mx-auto">
-              <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-4 pl-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" type="text" name="task_name" value="{{ $task->name }}" />
-              @error('task_name')
-              <div class="mt-3">
-                <p class="text-red-500">
-                  {{ $message }}
-                </p>
-              </div>
-              @enderror
-            </label>
-
-            <div class="mt-8 w-full flex items-center justify-center gap-10">
-              <a href="/tasks" class="block shrink-0 underline underline-offset-2">
-                戻る
-              </a>
-              <button type="submit" class="p-4 bg-sky-800 text-white w-full max-w-xs hover:bg-sky-900 transition-colors">
-                更新
-              </button>
-            </div>
-          </div>
-
-        </form>
-
-      </div>
-    </div>
-  </main>
-  
-</body>
-
-</html>
+@section('content')
+@if (count($errors) > 0)
+<ul>
+  @foreach ($errors->all() as $error)
+  <li>{{$error}}</li>
+  @endforeach
+</ul>
+@endif
+<form action="/edit" method="POST">
+  <table>
+    @csrf
+    <tr>
+      <th>id</th>
+      <td><input type="text" name="id" value="{{$form->id}}"></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><input type="text" name="name" value="{{$form->name}}"></td>
+    </tr>
+    <tr>
+      <th>age</th>
+      <td><input type="text" name="age" value="{{$form->age}}"></td>
+    </tr>
+    <tr>
+      <th>nationality</th>
+      <td><input type="text" name="nationality" value="{{$form->nationality}}"></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><button>送信</button></td>
+    </tr>
+  </table>
+</form>
+@endsection

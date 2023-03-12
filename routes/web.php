@@ -24,10 +24,11 @@ use App\Http\Controllers\TodoController;
 
 Route::get('/', [TodoController::class, 'index']);
 Route::post('/', [TodoController::class, 'store']);
-// Route::get('/add', [TodoController::class, 'get']);
-
-Route::post('/add/{id}', [TodoController::class, 'create']);
+Route::get('/find', [AuthorController::class, 'find']);
+Route::post('/find', [AuthorController::class, 'search']);
+Route::get('/add', [TodoController::class, 'add']);
+Route::post('/add', [TodoController::class, 'create']);
 Route::get('/edit', [TodoController::class, 'edit']);
-Route::post('/update', [TodoController::class, 'update']);
-Route::delete('/todo/{todo}', [TodoController::class, 'delete']);
-Route::post('/remove', [TodoController::class, 'remove']);
+Route::post('/edit', [TodoController::class, 'update']);
+Route::delete('/delete', [TodoController::class, 'delete']);
+Route::post('/delete', [TodoController::class, 'remove']);
