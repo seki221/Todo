@@ -1,19 +1,9 @@
-@extends('layouts.index')
-@section('content')
-
-<div class="container">
-  <table>
-    <tbody>
-      <tr>
-        <th>作成日</th>
-        <th>タスク名</th>
-        <th>更新</th>
-        <th>削除</th>
-      </tr>
       @foreach ($todos as $todo)
       <tr>
-        <td>{{$todo->id}}</id>
-        <td>{{$todo->content}}</td>
+        <td>{{$todo->created_at}}</id>
+        <td>
+          <input type="text" name="task" class="input-update" value={{$todo->content}}>
+        </td>
         <td class="eb">
           <div>
             <a href="/edit{{ $todo->content }}" class="edit">
@@ -32,7 +22,6 @@
         </td>
       </tr>
       @endforeach
-    </tbody>
-  </table>
-</div>
-@endsection
+      </tbody>
+      </table>
+      </div>
