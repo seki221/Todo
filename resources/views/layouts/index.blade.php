@@ -47,7 +47,7 @@
                       @csrf
                       <a href="/edit" class="edit">
                         <button class="button_edit">更新</button>
-                        @method('edit')
+                        @method('PUT')
                     </form>
                     </a>
                   </div>
