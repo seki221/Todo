@@ -29,8 +29,9 @@ class TodoController extends Controller
     }
     public function edit(Request $request)
     {
+        dd('a');
         $todo=Todo::find($request->id);
-        return view('layouts.edit',['content'=>'$content']);
+        return view('edit',['content'=>'$content']);
     }
     
     public function update(TodoRequest $request)
@@ -44,8 +45,9 @@ class TodoController extends Controller
 
     public function delete(Request $request)
     {
-        $todos = Todo::find($request->id);
-        return view('layouts.delete', ['form' => $todos]);
+        
+        $todo = Todo::find($request->id);
+        return view('delete', ['form' => $todo]);
     }
 
     public function remove(Request $request)
