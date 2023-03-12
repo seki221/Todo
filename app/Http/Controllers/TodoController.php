@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use App\Http\Requests\TodoRequest;
+use App\Http\Controllers\Controller;
+
 
 class TodoController extends Controller
 {
     public function index()
     {
+    
         $todos = Todo::all();
         return view('layouts.index', ['todos' => $todos]);
     }
@@ -21,14 +24,13 @@ class TodoController extends Controller
     public function create(TodoRequest $request)
     {
         $form = $request->all();
-        Todo::create($form);
         Todo::create(['content'=> $request->content]);
         return redirect('/');
     }
     public function edit(Request $request)
     {
-        $todos = Todo::find($request -> id);
-        return view('edit', ['form' => $todos]);
+        $todo=Todo::find($request->content);
+        return view('edit',['content'=>'']);
     }
     public function update(TodoRequest $request, $id)
     {
@@ -50,7 +52,7 @@ class TodoController extends Controller
     public function delete(Request $request)
     {
         $todos = Todo::find($request->id);
-        return view('delete', ['form' => $todos]);
+        return view('layouts.delete', ['form' => $todos]);
     }
 
     public function remove(Request $request)
