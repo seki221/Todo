@@ -25,14 +25,14 @@
           <input type="text" name="content" class="input-add">
           <input class="button-add" type="submit" value="追加">
         </form>
-        <table>
+        <!-- <table>
           <tbody>
             <tr>
               <th>作成日</th>
               <th>タスク名</th>
               <th>更新</th>
               <th>削除</th>
-            </tr>
+            </tr> -->
       </div>
     </div>
   </div>
@@ -41,8 +41,8 @@
   
       @yield('content')
   @endif
-  </tbody>
-  </table>
+  <!-- </tbody>
+  </table> -->
   </body>
 
 </html>
