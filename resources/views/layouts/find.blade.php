@@ -20,19 +20,19 @@
   <input type="text" name="input" value="{{$input}}">
   <input type="submit" value="見つける">
 </form>
-@if (@isset($author))
+@if (@isset($todo))
 <table>
   <tr>
     <th>id</th>
-    <th>name</th>
-    <th>age</th>
-    <th>nationality</th>
+    <th>content</th>
+    <th>edit</th>
+    <th>delete</th>
   </tr>
   <tr>
     <td>{{$todos->id}}</td>
     <td>{{$todos->name}}</td>
-    <td>{{$todos->age}}</td>
-    <td>{{$todos->nationality}}</td>
+    <td>{{$todos->edit}}</td>
+    <td>{{$todos->delete}}</td>
   </tr>
 </table>
 @endif
