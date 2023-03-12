@@ -24,7 +24,8 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'content' => 'requied',
+            'id' => 'requied',
         ];
     }
 }
