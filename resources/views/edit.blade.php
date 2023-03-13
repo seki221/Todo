@@ -12,10 +12,10 @@
           </div>
         </td>
         <td>
-          <div class="db">
-            <form action="/dalete/{{ $todo->id }}" method="post" class="delete" role="menuitem" tabindex="-1">
-              @csrf
-              @method('DELETE')
+          <form action="/dalete/{{ $todo->id }}" method="post" class="delete" role="menuitem" tabindex="-1">
+            @csrf
+            @method('DELETE')
+            <div class="db">
               <button type="submit" class="button_delete">削除</button>
             </form>
           </div>

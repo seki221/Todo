@@ -13,11 +13,10 @@
         </td>
         <td>
           <div class="db">
-            <form action="/dalete/{{ $todo->id }}" method="post" class="delete" role="menuitem" tabindex="-1">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="button_delete">削除</button>
-              <input type="text" name="task" class="input-update" value={{$todo->content}}>
+            view"{{url('delete/'.$todo->id) }}" method="POST">
+            {{method_field() }}{{method_field(delete)}}"" role="menuitem" tabindex="-1">
+            <button type="submit" class="button_delete">削除</button>
+            <input type="text" name="task" class="input-update" value={{$todo->content}}>
             </form>
           </div>
         </td>

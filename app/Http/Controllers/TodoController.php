@@ -27,7 +27,7 @@ class TodoController extends Controller
         Todo::create($form);
         return redirect('/');
     }
-    public function edit(Request $request)
+    public function edit(TodoRequest $request)
     {
         dd('a');
         $todo=Todo::find($request->id);
@@ -47,7 +47,7 @@ class TodoController extends Controller
     {
         
         $todo = Todo::find($request->id);
-        return view('delete', ['form' => $todo]);
+        return view('delete',[$todo->id]);
     }
 
     public function remove(Request $request)
