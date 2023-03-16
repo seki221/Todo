@@ -6,14 +6,14 @@
         </td>
         <td class="eb">
           <div>
-            <a href="/edit{{ $todo->content }}" class="edit">
+            <a href="/edit" class="edit" method="POST">
               <button class="button_edit">更新</button>
             </a>
           </div>
         </td>
         <td>
           <div class="db">
-            <form action="/dalete/{{ $todo->id }}" method="post" class="remove" role="menuitem" tabindex="-1">
+            <form action="/dalete" method="post" class="remove" role="menuitem" tabindex="-1">
               @csrf
               @method('DELETE')
               <button type="submit" class="button_delete">削除</button>

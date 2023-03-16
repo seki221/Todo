@@ -1,23 +1,40 @@
-      @foreach ($todos as $todo)
+      @foreach ($todos as $all)
       <tr>
         <td>{{$todo->created_at}}</id>
         <td>
           <input type="text" name="task" class="input-update" value={{$todo->content}}>
         </td>
-        <td class="eb">
+
+        <td>
+          <form action="{{ route('todo.update',$todo["id"]) }}" method="post">
+            {{ csrf_field() }}
+            {{ method_field('patch')}}
+            <button type="submit" class="btn btn-success">更新</button>
+          </form>
+        </td>
+
+        <!-- <td class="edit_button">
           <div>
             <a href="/edit{{ content->$content }}" class="edit">
               <button class="button_edit">更新</button>
             </a>
           </div>
-        </td>
-        <td>
+        </td> -->
+
+
+
+
+
+
+
+
+        <td class="button_delete-form">
           <form action="/dalete/{{ $todo->id }}" method="post" class="delete" role="menuitem" tabindex="-1">
             @csrf
             @method('DELETE')
-            <div class="db">
+            <div class="button">
               <button type="submit" class="button_delete">削除</button>
-            </form>
+          </form>
           </div>
         </td>
       </tr>

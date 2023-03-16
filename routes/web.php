@@ -21,12 +21,13 @@ use App\Http\Controllers\TodoController;
 //     Route::get('delete', [TodoController::class, 'delete']);
 // });
 
-
-Route::get('/', [TodoController::class, 'index']);
-Route::post('/', [TodoController::class, 'store']);
-Route::get('/add', [TodoController::class, 'add']);
-Route::post('/add', [TodoController::class, 'create']);
-Route::get('/edit', [TodoController::class, 'edit']);
-Route::post('/edit', [TodoController::class, 'update']);
-Route::get('/delete', [TodoController::class, 'delete']);
-Route::post('/delete', [TodoController::class, 'remove']);
+Route::group(['prefix' => 'todos'], function () {
+  Route::get('/', [TodoController::class, 'index']);
+  Route::post('/', [TodoController::class, 'store']);
+  Route::get('/add',[TodoController::class, 'add']);
+  Route::post('/add', [TodoController::class, 'create']);
+  Route::get('/edit', [TodoController::class, 'edit'])->name('edit.content');
+  Route::post('/edit', [TodoController::class, 'update'])->name('edit.post');
+  Route::get('/delete', [TodoController::class, 'delete']);
+  Route::post('views/delete', [TodoController::class, 'remove'])->name('views.delete');
+});
