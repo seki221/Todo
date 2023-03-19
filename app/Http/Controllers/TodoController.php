@@ -13,52 +13,86 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::all();
-        $url = route('home');
-        return view('layouts.index', ['todos' => $todos]);
+        return view('layouts.index', compact('todos'));
+    }
+    public function create()
+    {
+        return view('layouts.create');
     }
     
-    public function create(TodoRequest $request)
+    public function store(TodoRequest $request)
     {
-        $form = $request->all();
-        Todo::create($form);
-        return redirect()->route('layouts.create', ['id' => 0]);
+        
+        // $form = $request->all();
+        // Todo::create($form);
+        // return redirect()->route('layouts.create', ['id' => 0]);
+
+
+        $todo = new Todo();
+        $todo->content = $request->input('content');
+        $todo->save();
+
+        return redirect()->route('home');
+    
     }
-    public function store()
-    {
-        return view('layouts.index');
-    }
-    public function edit(Request $request,Todo $id)
+
+    public function edit(TodoRequest $request, $id)
     {
         $todo=Todo::find($id);
-        return view('layouts.update',compact('task'));
+        $todo->content = $request->input('content');
+        $todo->save();
+
+        return
+        redirect()->route('home');
     }
-    
-    public function update($id)
+
+    // public function update($id)
+    // {
+    //     $todo = Todo::find($id);
+    //     // $id->save();
+    //     // dd($todo);
+
+    //     // リダイレクトの生成
+    //     return redirect()->route('/layouts.update', ['id' => 1]);
+    // }
+
+
+    // public function delete(todo $request)
+    // {
+    //     $todo = Todo::find($request->id);
+    //     dd($todo);
+    //     $todo->delete();
+
+    //     return view('delete',[$todo->id]);
+    // }
+
+
+    // public function remove(Request $request)
+    // {
+    //     Todo::find($request->id)->delete();
+    //     return redirect()->route('home');
+    // }
+
+
+
+
+    // public function destroy($id)
+    // {
+    //     // Booksテーブルから指定のIDのレコード1件を取得
+    //     $todo = Todo::find($id);
+    //     // レコードを削除
+    //     $todo->delete();
+    //     dd('aa');
+    //     // 削除したら一覧画面にリダイレクト
+    //     return redirect()->route('home');
+    // }
+
+    public function destroy($id)
     {
         $todo = Todo::find($id);
-        // $id->save();
-        // dd($todo);
-        
-        // リダイレクトの生成
-        return redirect()->route('/layouts.update', ['id' => 1]);
-    }
-    
-
-    public function delete(Request $request)
-    {
-        
-        $todo = Todo::find($request->id);
-        return view('delete',[$todo->id]);
-    }
-
-    public function remove(Request $request,Todo $todo)
-    {
-        $this->authorize('destroy', $todo);
-
+        // レコードを削除
         $todo->delete();
-        dd($todo);
-        // Todo::find($request->id)->delete();
-        return redirect('/');
+        // 削除したら一覧画面にリダイレクト
+        return redirect()->route('home');
     }
-
 }

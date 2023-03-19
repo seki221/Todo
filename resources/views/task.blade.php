@@ -1,24 +1,24 @@
       @section('layouts.index')
       @foreach ($todos as $todo)
       <tr>
-        <td>{{$todo->created_at}}</id>
-        <td>
-          <input type="text" name="task" class="input-update" value={{$todo->content}}>
-        </td>
-        <td class="eb">
-          <div>
-            <form action="{{ route('update') }}" class="edit" method="POST">
+        <form action="/edit/{{$todo->id}}" class="edit" method="POST">
+          <td>{{$todo->created_at}}</id>
+          <td>
+            <input type="text" name="content" class="input-update" value={{$todo->content}}>
+          </td>
+          <td class="eb">
+            <div>
               @csrf
               @method('POST')
               <button class="button_edit">更新</button>
-            </form>
-          </div>
-        </td>
+            </div>
+          </td>
+        </form>
         <td>
           <div class="db">
-            <form action="/dalete" method="post" class="remove" role="menuitem" tabindex="-1">
+            <form action="{{ route('destroy',['id'=>$todo->id]) }}" method="POST">
               @csrf
-              @method('DELETE')
+              @method('POST')
               <button type="submit" class="button_delete">削除</button>
             </form>
           </div>
