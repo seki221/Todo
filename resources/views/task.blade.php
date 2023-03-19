@@ -1,3 +1,4 @@
+      @section('layouts.index')
       @foreach ($todos as $todo)
       <tr>
         <td>{{$todo->created_at}}</id>
@@ -6,9 +7,11 @@
         </td>
         <td class="eb">
           <div>
-            <a href="/edit" class="edit" method="POST">
+            <form action="{{ route('update') }}" class="edit" method="POST">
+              @csrf
+              @method('POST')
               <button class="button_edit">更新</button>
-            </a>
+            </form>
           </div>
         </td>
         <td>

@@ -12,34 +12,35 @@ class TodoController extends Controller
 {
     public function index()
     {
-    
         $todos = Todo::all();
+        $url = route('home');
         return view('layouts.index', ['todos' => $todos]);
     }
     
-    public function add()
-    {
-        return view('add');
-    }
     public function create(TodoRequest $request)
     {
         $form = $request->all();
         Todo::create($form);
-        return redirect('/');
+        return redirect()->route('layouts.create', ['id' => 0]);
     }
-    public function edit(Request $request)
+    public function store()
     {
-        $todo=Todo::find($request->id);
-        
-        return view('edit',['content'=>'$content']);
+        return view('layouts.index');
+    }
+    public function edit(Request $request,Todo $id)
+    {
+        $todo=Todo::find($id);
+        return view('layouts.update',compact('task'));
     }
     
-    public function update(TodoRequest $request)
+    public function update($id)
     {
-        $form = $request->all();
-        unset($form['_token']);
-        Todo::where('id', $request->content)->update($form);
-        return redirect('edit');
+        $todo = Todo::find($id);
+        // $id->save();
+        // dd($todo);
+        
+        // リダイレクトの生成
+        return redirect()->route('/layouts.update', ['id' => 1]);
     }
     
 
