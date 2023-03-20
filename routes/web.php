@@ -23,7 +23,7 @@ Route::post('edit/{id}', [TodoController::class, 'edit']);
 Route::post('update/{id}', [TodoController::class, 'layouts.update'])->name('update');
 // Route::get('/delete/{id}', [TodoController::class, 'delete']);
 // Route::post('remove', [TodoController::class, 'remove']);
-Route::post('/', [TestController::class, 'post']);
+
 
 // 削除
 Route::post('/destroy{id}', [TodoController::class, 'destroy'])->name('destroy');

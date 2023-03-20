@@ -17,31 +17,26 @@ class TodoController extends Controller
     }
     public function create()
     {
+        
         return view('layouts.create');
     }
     
     public function store(TodoRequest $request)
     {
-        
-        // $form = $request->all();
-        // Todo::create($form);
-        // return redirect()->route('layouts.create', ['id' => 0]);
-
-
         $todo = new Todo();
+        // dd($todo);
         $todo->content = $request->input('content');
         $todo->save();
 
+        
         return redirect()->route('home');
-    
+        
     }
-
     public function edit(TodoRequest $request, $id)
     {
         $todo=Todo::find($id);
         $todo->content = $request->input('content');
         $todo->save();
-
         return
         redirect()->route('home');
     }
@@ -95,11 +90,8 @@ class TodoController extends Controller
         // 削除したら一覧画面にリダイレクト
         return redirect()->route('home');
     }
-
-    public function post(TodoRequest $request)
+        public function post(TodoRequest $request)
     {
         return view('home', ['txt' => '正しい入力です']);
     }
-
-    
 }

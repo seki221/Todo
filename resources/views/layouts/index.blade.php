@@ -22,14 +22,16 @@
         <tr>
           <th>
             <ul>
-
               <li>
                 {{$errors->first('content')}}
               </li>
+              <!-- <li>{{$errors->first('content20')}}</li> -->
             </ul>
           </th>
         </tr>
         @endif
+        
+
         <form action="/add" method="post" class="mb-30">
           @csrf
           <input type="text" name="content" class="input-add">
