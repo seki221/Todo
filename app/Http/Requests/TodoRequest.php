@@ -13,8 +13,8 @@ class TodoRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
-    }
+            return true;
+        }
 
     /**
      * Get the validation rules that apply to the request.
@@ -28,5 +28,15 @@ class TodoRequest extends FormRequest
             'content' => 'required',
             
         ];
+    }
+    public function messages()
+    {
+        return [
+            'content.required' => 'タスクを入力してください。',
+        ];
+    }
+    protected function getRedirectUrl()
+    {
+        return 'verror';
     }
 }

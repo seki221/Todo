@@ -21,6 +21,13 @@
 
         <form action="/add" method="post" class="mb-30">
           @csrf
+          @if ($errors->has('content'))
+          <tr>
+            <th>ERROR</th>
+            <td>{{$errors->first('content')}}</td>
+          </tr>
+          @endif
+          <br>
           <input type="text" name="content" class="input-add">
           <input class="button-add" type="submit" value="追加">
         </form>

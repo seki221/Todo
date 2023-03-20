@@ -13,7 +13,7 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::all();
-        return view('layouts.index', compact('todos'));
+        return view('layouts.index', compact('todos'),['txt' => 'フォームを入力']);
     }
     public function create()
     {
@@ -94,5 +94,15 @@ class TodoController extends Controller
         $todo->delete();
         // 削除したら一覧画面にリダイレクト
         return redirect()->route('home');
+    }
+
+    public function post(TodoRequest $request)
+    {
+        return view('home', ['txt' => '正しい入力です']);
+    }
+
+    public function verror()
+    {
+        return view('verror');
     }
 }
