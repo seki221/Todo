@@ -33,6 +33,7 @@ class TodoRequest extends FormRequest
     {
         return [
             'content.required' => 'タスクを入力してください。',
+            'content.required' => '20文字以内で書いてください。',
         ];
     }
     
