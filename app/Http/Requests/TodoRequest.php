@@ -35,8 +35,5 @@ class TodoRequest extends FormRequest
             'content.required' => 'タスクを入力してください。',
         ];
     }
-    protected function getRedirectUrl()
-    {
-        return 'verror';
-    }
+    
 }

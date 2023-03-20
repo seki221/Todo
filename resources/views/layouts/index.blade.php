@@ -18,16 +18,20 @@
     <div class="card">
       <p class=title>Todo List</p>
       <div class="todo">
+        @if ($errors->has('content'))
+        <tr>
+          <th>
+            <ul>
 
+              <li>
+                {{$errors->first('content')}}
+              </li>
+            </ul>
+          </th>
+        </tr>
+        @endif
         <form action="/add" method="post" class="mb-30">
           @csrf
-          @if ($errors->has('content'))
-          <tr>
-            <th>ERROR</th>
-            <td>{{$errors->first('content')}}</td>
-          </tr>
-          @endif
-          <br>
           <input type="text" name="content" class="input-add">
           <input class="button-add" type="submit" value="追加">
         </form>

@@ -101,8 +101,5 @@ class TodoController extends Controller
         return view('home', ['txt' => '正しい入力です']);
     }
 
-    public function verror()
-    {
-        return view('verror');
-    }
+    
 }
