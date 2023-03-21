@@ -25,7 +25,7 @@
               <li>
                 {{$errors->first('content')}}
               </li>
-              <!-- <li>{{$errors->first('content20')}}</li> -->
+              <li>{{$errors->first('content')}}</li>
             </ul>
           </th>
         </tr>
