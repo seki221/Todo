@@ -24,15 +24,17 @@ class TodoRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'content' => 'required|max20',
+            'content' => 'required',
+            'content' => 'required|string:max20',
         ];
     }
     public function messages()
     {
         return [
             'content.required' =>'タスクを入力してください。',
-            'content.max20' =>'タスクは20文字以内で入力してください。',
+            // 'content.required.max' =>'タスクは20文字以内で入力してください。',
+            'content.string' =>  'The :attribute must be less than or equal to :20value characters.',
+            
             ];
     }
     
